@@ -7,6 +7,7 @@
 	color: #fff !important;
 	font-weight: bold;
 	font-size: 16px;
+	margin-bottom: 10px;
 }
 
 .navbar-custom .nav>li>a {
@@ -126,6 +127,47 @@
 	font-size: 16px;
 	line-height: 1.8;
 	margin-bottom: 15px;
+}
+
+.description {
+	background-color: #f5f5f5;
+	padding: 30px;
+	border-radius: 8px;
+	border-left: 5px solid #113f6d;
+	margin-bottom: 50px;
+}
+
+.description p {
+	font-size: 16px;
+	line-height: 1.8;
+	margin-bottom: 20px;
+	color: #333;
+}
+
+.description ul {
+	margin: 0;
+	padding-left: 20px;
+}
+
+.description li {
+	font-size: 16px;
+	line-height: 1.6;
+	margin-bottom: 10px;
+	color: #555;
+	position: relative;
+	padding-left: 15px;
+}
+
+.description li:before {
+	content: '';
+	display: block;
+	width: 6px;
+	height: 6px;
+	background-color: #113f6d;
+	border-radius: 50%;
+	position: absolute;
+	left: 0;
+	top: 8px;
 }
 
 .programme-item {
