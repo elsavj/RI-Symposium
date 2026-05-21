@@ -337,6 +337,7 @@
 	}
 
 	.banner-image {
+		padding-top:5px;
 		width: 100%;
 		height: auto;
 	}
