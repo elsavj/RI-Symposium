@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <title>Photo Gallery | Research Integrity in the GenAI Era Symposium</title>
+    <meta name="description" content="Photo gallery for the Research Integrity in the GenAI Era Symposium 2026">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="images/favicon.ico">
+
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="fonts/font-awesome/css/font-awesome.css" rel="stylesheet">
+    <link href="css/animations.css" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body class="no-trans">
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#siteNavbar" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://127.0.0.1:5500/#home">HKU Research Integrity in the GenAI Era Symposium 2026</a>
+            </div>
+            <div class="collapse navbar-collapse" id="siteNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="http://127.0.0.1:5500/#programme">Overview</a></li>
+                    <li><a href="http://127.0.0.1:5500/#timetable">Rundown</a></li>
+                    <li><a href="http://127.0.0.1:5500/#abstracts">Abstracts</a></li>
+                    <li><a href="http://127.0.0.1:5500/#speakers">Speakers</a></li>
+                    <li><a href="http://127.0.0.1:5500/#media">Media</a></li>
+                    <li><a href="http://127.0.0.1:5500/#resources">Resources</a></li>
+                    <li><a href="http://127.0.0.1:5500/#registration">Registration</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-section" style="margin-top: 50px;">
+        <div class="container">
+            <h1 class="section-title" style="color: #fff; margin-bottom: 10px;">Photo Gallery</h1>
+            <p class="media-intro" style="color: rgba(255,255,255,0.9);">Browse highlights from the symposium and view each image in full detail.</p>
+        </div>
+    </section>
+
+    <section class="section clearfix secPadding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="photo-gallery-grid" id="photoGallery"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="photo-pagination" id="photoPagination"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="photo-modal" id="photoModal" aria-hidden="true">
+        <div class="photo-modal__backdrop" data-close-photo-modal></div>
+        <div class="photo-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="photoModalTitle">
+            <button type="button" class="photo-modal__close" data-close-photo-modal aria-label="Close photo viewer">&times;</button>
+            <button type="button" class="photo-modal__nav photo-modal__nav--prev" data-prev-photo aria-label="Previous photo">&#8249;</button>
+            <button type="button" class="photo-modal__nav photo-modal__nav--next" data-next-photo aria-label="Next photo">&#8250;</button>
+            <img id="photoModalImage" class="photo-modal__image" src="" alt="">
+            <p id="photoModalTitle" class="photo-modal__caption"></p>
+        </div>
+    </div>
+    <div class="space-lg"></div>
+
+    <footer class="footer-custom">
+        <div class="container">
+            <p style="margin: 0;">© 2026 The University of Hong Kong. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script type="text/javascript" src="plugins/jquery.min.js"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+    <script>
+        (function () {
+            var photos = [
+                { src: 'images_gallery/20260529_0004.jpg', alt: 'Symposium photo 20260529_0004' },
+                { src: 'images_gallery/20260529_0015.jpg', alt: 'Symposium photo 20260529_0015' },
+                { src: 'images_gallery/20260529_0019.jpg', alt: 'Symposium photo 20260529_0019' },
+                { src: 'images_gallery/20260529_0022.jpg', alt: 'Symposium photo 20260529_0022' },
+                { src: 'images_gallery/20260529_0054.jpg', alt: 'Symposium photo 20260529_0054' },
+                { src: 'images_gallery/20260529_0059.jpg', alt: 'Symposium photo 20260529_0059' },
+                { src: 'images_gallery/20260529_0064.jpg', alt: 'Symposium photo 20260529_0064' },
+                { src: 'images_gallery/20260529_0072.jpg', alt: 'Symposium photo 20260529_0072' },
+                { src: 'images_gallery/20260529_0075.jpg', alt: 'Symposium photo 20260529_0075' },
+                { src: 'images_gallery/20260529_0077.jpg', alt: 'Symposium photo 20260529_0077' },
+                { src: 'images_gallery/20260529_0089.jpg', alt: 'Symposium photo 20260529_0089' },
+                { src: 'images_gallery/20260529_0090.jpg', alt: 'Symposium photo 20260529_0090' },
+                { src: 'images_gallery/20260529_0092.jpg', alt: 'Symposium photo 20260529_0092' },
+                { src: 'images_gallery/20260529_0096.jpg', alt: 'Symposium photo 20260529_0096' },
+                { src: 'images_gallery/20260529_0101.jpg', alt: 'Symposium photo 20260529_0101' },
+                { src: 'images_gallery/20260529_0125.jpg', alt: 'Symposium photo 20260529_0125' },
+                { src: 'images_gallery/20260529_0130.jpg', alt: 'Symposium photo 20260529_0130' },
+                { src: 'images_gallery/20260529_0138.jpg', alt: 'Symposium photo 20260529_0138' },
+                { src: 'images_gallery/20260529_0145.jpg', alt: 'Symposium photo 20260529_0145' },
+                { src: 'images_gallery/20260529_0149.jpg', alt: 'Symposium photo 20260529_0149' },
+                { src: 'images_gallery/20260529_0156.jpg', alt: 'Symposium photo 20260529_0156' },
+                { src: 'images_gallery/20260529_0171.jpg', alt: 'Symposium photo 20260529_0171' },
+                { src: 'images_gallery/20260529_0188.jpg', alt: 'Symposium photo 20260529_0188' },
+                { src: 'images_gallery/20260529_0191.jpg', alt: 'Symposium photo 20260529_0191' },
+                { src: 'images_gallery/20260529_0212.jpg', alt: 'Symposium photo 20260529_0212' },
+                { src: 'images_gallery/20260529_0215.jpg', alt: 'Symposium photo 20260529_0215' },
+                { src: 'images_gallery/20260529_0246.jpg', alt: 'Symposium photo 20260529_0246' },
+                { src: 'images_gallery/20260529_0264.jpg', alt: 'Symposium photo 20260529_0264' },
+                { src: 'images_gallery/20260529_0276.jpg', alt: 'Symposium photo 20260529_0276' },
+                { src: 'images_gallery/20260529_0294.jpg', alt: 'Symposium photo 20260529_0294' },
+                { src: 'images_gallery/20260529_0307.jpg', alt: 'Symposium photo 20260529_0307' },
+                { src: 'images_gallery/20260529_0312.jpg', alt: 'Symposium photo 20260529_0312' },
+                { src: 'images_gallery/20260529_0317(1).jpg', alt: 'Symposium photo 20260529_0317(1)' },
+                { src: 'images_gallery/20260529_0322.jpg', alt: 'Symposium photo 20260529_0322' },
+                { src: 'images_gallery/20260529_0341.jpg', alt: 'Symposium photo 20260529_0341' },
+                { src: 'images_gallery/20260529_0347.jpg', alt: 'Symposium photo 20260529_0347' },
+                { src: 'images_gallery/20260529_0364.jpg', alt: 'Symposium photo 20260529_0364' },
+                { src: 'images_gallery/20260529_0366.jpg', alt: 'Symposium photo 20260529_0366' },
+                { src: 'images_gallery/20260529_0397.jpg', alt: 'Symposium photo 20260529_0397' },
+                { src: 'images_gallery/20260529_0416.jpg', alt: 'Symposium photo 20260529_0416' },
+                { src: 'images_gallery/20260529_0424.jpg', alt: 'Symposium photo 20260529_0424' },
+                { src: 'images_gallery/20260529_0453.jpg', alt: 'Symposium photo 20260529_0453' },
+                { src: 'images_gallery/20260529_0456.jpg', alt: 'Symposium photo 20260529_0456' },
+                { src: 'images_gallery/20260529_0466.jpg', alt: 'Symposium photo 20260529_0466' },
+                { src: 'images_gallery/20260529_0467.jpg', alt: 'Symposium photo 20260529_0467' },
+                { src: 'images_gallery/20260529_0470.jpg', alt: 'Symposium photo 20260529_0470' },
+                { src: 'images_gallery/20260529_0520.jpg', alt: 'Symposium photo 20260529_0520' },
+                { src: 'images_gallery/20260529_0543.jpg', alt: 'Symposium photo 20260529_0543' },
+                { src: 'images_gallery/20260529_0548.jpg', alt: 'Symposium photo 20260529_0548' },
+                { src: 'images_gallery/20260529_0555.jpg', alt: 'Symposium photo 20260529_0555' },
+                { src: 'images_gallery/20260529_0565.jpg', alt: 'Symposium photo 20260529_0565' },
+                { src: 'images_gallery/20260529_0569.jpg', alt: 'Symposium photo 20260529_0569' },
+                { src: 'images_gallery/20260529_0583.jpg', alt: 'Symposium photo 20260529_0583' },
+                { src: 'images_gallery/20260529_0623.jpg', alt: 'Symposium photo 20260529_0623' },
+                { src: 'images_gallery/20260529_0629.jpg', alt: 'Symposium photo 20260529_0629' },
+                { src: 'images_gallery/20260529_0641.jpg', alt: 'Symposium photo 20260529_0641' },
+                { src: 'images_gallery/20260529_0642.jpg', alt: 'Symposium photo 20260529_0642' },
+                { src: 'images_gallery/20260529_0643.jpg', alt: 'Symposium photo 20260529_0643' },
+                { src: 'images_gallery/20260529_0646.jpg', alt: 'Symposium photo 20260529_0646' },
+                { src: 'images_gallery/20260529_0670.jpg', alt: 'Symposium photo 20260529_0670' },
+                { src: 'images_gallery/20260529_0672.jpg', alt: 'Symposium photo 20260529_0672' },
+                { src: 'images_gallery/20260529_0676.jpg', alt: 'Symposium photo 20260529_0676' },
+                { src: 'images_gallery/20260529_0681.jpg', alt: 'Symposium photo 20260529_0681' },
+                { src: 'images_gallery/20260529_0714.jpg', alt: 'Symposium photo 20260529_0714' },
+                { src: 'images_gallery/20260529_0719.jpg', alt: 'Symposium photo 20260529_0719' },
+                { src: 'images_gallery/20260529_0732.jpg', alt: 'Symposium photo 20260529_0732' },
+                { src: 'images_gallery/20260529_0735.jpg', alt: 'Symposium photo 20260529_0735' },
+                { src: 'images_gallery/20260529_0736.jpg', alt: 'Symposium photo 20260529_0736' },
+                { src: 'images_gallery/20260529_0739.jpg', alt: 'Symposium photo 20260529_0739' },
+                { src: 'images_gallery/20260529_0749.jpg', alt: 'Symposium photo 20260529_0749' },
+                { src: 'images_gallery/20260529_0755.jpg', alt: 'Symposium photo 20260529_0755' },
+                { src: 'images_gallery/20260529_0770.jpg', alt: 'Symposium photo 20260529_0770' },
+                { src: 'images_gallery/20260529_0792.jpg', alt: 'Symposium photo 20260529_0792' },
+                { src: 'images_gallery/20260529_0795.jpg', alt: 'Symposium photo 20260529_0795' },
+                { src: 'images_gallery/20260529_0810.jpg', alt: 'Symposium photo 20260529_0810' },
+                { src: 'images_gallery/20260529_0819.jpg', alt: 'Symposium photo 20260529_0819' },
+                { src: 'images_gallery/20260529_0824.jpg', alt: 'Symposium photo 20260529_0824' },
+                { src: 'images_gallery/20260529_0829.jpg', alt: 'Symposium photo 20260529_0829' },
+                { src: 'images_gallery/20260529_0830.jpg', alt: 'Symposium photo 20260529_0830' },
+                { src: 'images_gallery/20260529_0831.jpg', alt: 'Symposium photo 20260529_0831' },
+                { src: 'images_gallery/20260529_0841.jpg', alt: 'Symposium photo 20260529_0841' },
+                { src: 'images_gallery/20260529_0842.jpg', alt: 'Symposium photo 20260529_0842' },
+                { src: 'images_gallery/20260529_0844.jpg', alt: 'Symposium photo 20260529_0844' },
+                { src: 'images_gallery/20260529_0846.jpg', alt: 'Symposium photo 20260529_0846' },
+                { src: 'images_gallery/20260529_0852.jpg', alt: 'Symposium photo 20260529_0852' },
+                { src: 'images_gallery/20260529_0853.jpg', alt: 'Symposium photo 20260529_0853' },
+                { src: 'images_gallery/20260529_0866.jpg', alt: 'Symposium photo 20260529_0866' },
+                { src: 'images_gallery/20260529_0884.jpg', alt: 'Symposium photo 20260529_0884' },
+                { src: 'images_gallery/20260529_0944.jpg', alt: 'Symposium photo 20260529_0944' },
+                { src: 'images_gallery/20260529_0947.jpg', alt: 'Symposium photo 20260529_0947' },
+                { src: 'images_gallery/20260529_1005.jpg', alt: 'Symposium photo 20260529_1005' },
+                { src: 'images_gallery/20260529_1038.jpg', alt: 'Symposium photo 20260529_1038' },
+                { src: 'images_gallery/20260529_1045.jpg', alt: 'Symposium photo 20260529_1045' },
+                { src: 'images_gallery/20260529_1062.jpg', alt: 'Symposium photo 20260529_1062' },
+                { src: 'images_gallery/20260529_1068.jpg', alt: 'Symposium photo 20260529_1068' },
+                { src: 'images_gallery/20260529_1081.jpg', alt: 'Symposium photo 20260529_1081' },
+                { src: 'images_gallery/20260529_1082.jpg', alt: 'Symposium photo 20260529_1082' },
+                { src: 'images_gallery/20260529_1093.jpg', alt: 'Symposium photo 20260529_1093' },
+                { src: 'images_gallery/20260529_1103.jpg', alt: 'Symposium photo 20260529_1103' },
+                { src: 'images_gallery/20260529_1124.jpg', alt: 'Symposium photo 20260529_1124' },
+                { src: 'images_gallery/20260529_1127.jpg', alt: 'Symposium photo 20260529_1127' },
+                { src: 'images_gallery/20260529_1140.jpg', alt: 'Symposium photo 20260529_1140' },
+                { src: 'images_gallery/20260529_1153.jpg', alt: 'Symposium photo 20260529_1153' },
+                { src: 'images_gallery/20260529_1157.jpg', alt: 'Symposium photo 20260529_1157' },
+                { src: 'images_gallery/20260529_1167.jpg', alt: 'Symposium photo 20260529_1167' }
+            ];
+
+            var gallery = document.getElementById('photoGallery');
+            var pagination = document.getElementById('photoPagination');
+            var modal = document.getElementById('photoModal');
+            var modalImage = document.getElementById('photoModalImage');
+            var modalCaption = document.getElementById('photoModalTitle');
+            var prevPhoto = document.querySelector('[data-prev-photo]');
+            var nextPhoto = document.querySelector('[data-next-photo]');
+            var photosPerPage = 15;
+            var currentPage = 0;
+            var currentPhotoIndex = 0;
+
+            function renderGallery() {
+                var start = currentPage * photosPerPage;
+                var pagePhotos = photos.slice(start, start + photosPerPage);
+                gallery.innerHTML = pagePhotos.map(function (photo, index) {
+                    var globalIndex = start + index;
+                    return '<button class="photo-card" type="button" data-index="' + globalIndex + '"><img src="' + photo.src + '" alt="' + photo.alt + '"><span class="photo-card__caption">' + photo.alt + '</span></button>';
+                }).join('');
+
+                gallery.querySelectorAll('.photo-card').forEach(function (card) {
+                    card.addEventListener('click', function () {
+                        var index = parseInt(this.getAttribute('data-index'), 10);
+                        openModal(index);
+                    });
+                });
+            }
+
+            function renderPagination() {
+                var pageCount = Math.ceil(photos.length / photosPerPage);
+                if (pageCount <= 1) {
+                    pagination.innerHTML = '';
+                    return;
+                }
+                var buttons = [];
+                for (var i = 0; i < pageCount; i++) {
+                    buttons.push('<button class="photo-page-button' + (i === currentPage ? ' is-active' : '') + '" type="button" data-page="' + i + '">' + (i + 1) + '</button>');
+                }
+                pagination.innerHTML = buttons.join('');
+                pagination.querySelectorAll('.photo-page-button').forEach(function (button) {
+                    button.addEventListener('click', function () {
+                        currentPage = parseInt(this.getAttribute('data-page'), 10);
+                        renderGallery();
+                        renderPagination();
+                        window.scrollTo({ top: gallery.offsetTop - 130, behavior: 'smooth' });
+                    });
+                });
+            }
+
+            if (gallery) {
+                renderGallery();
+                renderPagination();
+            }
+
+            function openModal(index) {
+                currentPhotoIndex = index;
+                showModalPhoto(currentPhotoIndex);
+                modal.classList.add('is-open');
+                modal.setAttribute('aria-hidden', 'false');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function showModalPhoto(index) {
+                if (index < 0) {
+                    index = photos.length - 1;
+                }
+                if (index >= photos.length) {
+                    index = 0;
+                }
+                currentPhotoIndex = index;
+                var photo = photos[currentPhotoIndex];
+                modalImage.src = photo.src;
+                modalImage.alt = photo.alt;
+                modalCaption.textContent = photo.alt;
+            }
+
+            function closeModal() {
+                modal.classList.remove('is-open');
+                modal.setAttribute('aria-hidden', 'true');
+                document.body.style.overflow = '';
+            }
+
+            if (prevPhoto && nextPhoto) {
+                prevPhoto.addEventListener('click', function () {
+                    showModalPhoto(currentPhotoIndex - 1);
+                });
+                nextPhoto.addEventListener('click', function () {
+                    showModalPhoto(currentPhotoIndex + 1);
+                });
+            }
+
+            if (modal) {
+                modal.querySelectorAll('[data-close-photo-modal]').forEach(function (button) {
+                    button.addEventListener('click', closeModal);
+                });
+
+                modal.addEventListener('click', function (event) {
+                    if (event.target === modal) {
+                        closeModal();
+                    }
+                });
+
+                document.addEventListener('keydown', function (event) {
+                    if (event.key === 'Escape') {
+                        closeModal();
+                    }
+                });
+            }
+        })();
+    </script>
+</body>
+
+</html>
