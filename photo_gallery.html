@@ -214,7 +214,7 @@
                 var pagePhotos = photos.slice(start, start + photosPerPage);
                 gallery.innerHTML = pagePhotos.map(function (photo, index) {
                     var globalIndex = start + index;
-                    return '<button class="photo-card" type="button" data-index="' + globalIndex + '"><img src="' + photo.src + '" alt="' + photo.alt + '"><span class="photo-card__caption">' + photo.alt + '</span></button>';
+                    return '<button class="photo-card" type="button" data-index="' + globalIndex + '"><img src="' + photo.src + '" alt="' + photo.alt + '"></button>';
                 }).join('');
 
                 gallery.querySelectorAll('.photo-card').forEach(function (card) {
